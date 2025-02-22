@@ -109,7 +109,11 @@ in
       completionInit = "autoload -U compinit && compinit";
       dotDir = ".config/zsh";
       historySubstringSearch.enable = true;
-      profileExtra = 'eval "$(/opt/homebrew/bin/brew shellenv)"';
+      profileExtra = "
+      export XDG_CONFIG_HOME="$HOME/.config";
+      export KUBECONFIG="$HOME/.config/kube";
+      eval '$(/opt/homebrew/bin/brew shellenv)'
+      ";
       syntaxHighlighting = {
         enable = true;
       };
