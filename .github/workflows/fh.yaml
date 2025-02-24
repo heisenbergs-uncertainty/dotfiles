@@ -1,27 +1,28 @@
-name: Build 🏗️ and Cache ❄️
+name: "Publish tags to FlakeHub"
 on:
-  workflow_dispatch:
-  pull_request:
   push:
-    branches:
-    - main
     tags:
-    - "v?[0-9]+.[0-9]+.[0-9]+*"
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
-
-env:
-  RUST_BACKTRACE: full
-
+      - "v?[0-9]+.[0-9]+.[0-9]+*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "The existing tag to publish to FlakeHub"
+        type: "string"
+        required: true
 jobs:
-  DeterminateCI:
-    name: Determinate CI 👷
-    uses: DeterminateSystems/ci/.github/workflows/workflow.yml@main
+  flakehub-publish:
+    runs-on: "ubuntu-latest"
     permissions:
       id-token: "write"
       contents: "read"
-    with:
-      visibility: public
-      name: what-is-a-theostack/home-manager"
+    steps:
+      - uses: "actions/checkout@v4"
+        with:
+          ref: "${{ (inputs.tag != null) && format('refs/tags/{0}', inputs.tag) || '' }}"
+      - uses: "DeterminateSystems/nix-installer-action@main"
+      - uses: "DeterminateSystems/flakehub-push@main"
+        with:
+          visibility: "public"
+          name: "what-is-a-theostack/home-manager"
+          tag: "${{ inputs.tag }}"
+          include-output-paths: true
