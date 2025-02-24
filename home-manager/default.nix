@@ -14,9 +14,6 @@ in
     inherit username;
     homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
 
-    catppuccin.enable = true;
-    catpuccin.flavor = "mocha";
-
     packages =
       with pkgs;
       [
