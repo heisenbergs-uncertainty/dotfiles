@@ -113,9 +113,6 @@ in
       syntaxHighlighting = {
         enable = true;
       };
-      zsh-abbr = {
-        enable = true;
-      };
     };
   };
 }
