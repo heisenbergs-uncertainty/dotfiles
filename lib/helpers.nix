@@ -24,7 +24,7 @@
           stateVersion
           ;
       };
-      modules = [ ../home-manager inputs.catpuccin.homeManagerModules.catppuccin ];
+      modules = [ ../home-manager catpuccin.homeManagerModules.catppuccin ];
     };
 
   forAllSystems = inputs.nixpkgs.lib.genAttrs [
