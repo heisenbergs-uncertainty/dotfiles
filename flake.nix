@@ -21,6 +21,10 @@
           username = "matthewholden";
           hostname = "C002108230";
         };
+         "linuxUsername@linuxHostname" = helper.mkHome {
+          username = "linuxUsername";
+          hostname = "linuxHostname";
+        };
       };
     };
 }
