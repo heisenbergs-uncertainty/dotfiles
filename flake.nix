@@ -20,7 +20,7 @@
         "matthewholden@C002108230" = helper.mkHome {
           username = "matthewholden";
           hostname = "C002108230";
-          platform = "darwin-aarch64";
+          platform = "aarch64-darwin";
         };
          "linuxUsername@linuxHostname" = helper.mkHome {
           username = "linuxUsername";
