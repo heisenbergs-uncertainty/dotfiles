@@ -77,6 +77,16 @@ in
     fd = {
       enable = true;
     };
+	
+    git = {
+      enable = true;
+      userName = "matthew-reed-holde";
+      userEmail = "matthewreedholden@icloud.com";
+    };
+
+    gh = {
+      enable = true;
+    };
 
     kubecolor = {
       enable = true;
@@ -87,7 +97,7 @@ in
       enable = true;
       shellIntegration.enableZshIntegration = true;
     };
-
+    
     jq.enable = true;
 
     zoxide = {
