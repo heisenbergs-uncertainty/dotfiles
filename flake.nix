@@ -4,7 +4,7 @@
     catppuccin.url = "https://flakehub.com/f/catppuccin/nix/1.2.1.tar.gz";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*";
-    home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.2411.*";
+    home-manager.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.714772.tar.gz";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs.url = "https://flakehub.com/f/nixos/nixpkgs/0.2411.*";
   };
