@@ -1,19 +1,5 @@
 {
   "nodes": {
-    "catppuccin": {
-      "locked": {
-        "lastModified": 1734734291,
-        "narHash": "sha256-CFX4diEQHKvZYjnhf7TLg20m3ge1O4vqgplsk/Kuaek=",
-        "rev": "1e4c3803b8da874ff75224ec8512cb173036bbd8",
-        "revCount": 344,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/catppuccin/nix/1.2.1/0193e646-1107-7f69-a402-f2a3988ecf1d/source.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/catppuccin/nix/1.2.1.tar.gz"
-      }
-    },
     "determinate": {
       "inputs": {
         "determinate-nixd-aarch64-darwin": "determinate-nixd-aarch64-darwin",
@@ -204,7 +190,7 @@
       },
       "original": {
         "type": "tarball",
-        "url": "https://flakehub.com/f/NixOS/nixpkgs/0.2411.714772.tar.gz"
+        "url": "https://flakehub.com/f/NixOS/nixpkgs/0.2411.%2A"
       }
     },
     "naersk": {
@@ -373,7 +359,6 @@
     },
     "root": {
       "inputs": {
-        "catppuccin": "catppuccin",
         "determinate": "determinate",
         "fh": "fh",
         "home-manager": "home-manager",

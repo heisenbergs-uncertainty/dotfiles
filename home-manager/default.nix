@@ -20,8 +20,7 @@ in
         cpufetch
         fastfetch
         ipfetch
-        onefetch
-        micro
+        onefetch micro
       ]
       ++ lib.optionals isLinux [
         ramfetch
@@ -80,11 +79,15 @@ in
 	
     git = {
       enable = true;
-      userName = "matthew-reed-holde";
+      userName = "matthew-reed-holden";
       userEmail = "matthewreedholden@icloud.com";
     };
 
     gh = {
+      enable = true;
+    };
+
+    ghostyy = {
       enable = true;
     };
 
