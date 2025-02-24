@@ -17,7 +17,7 @@
     in
     {
       homeConfigurations = {
-        "matthewholden@C002108230" = helper.mkHome {
+        "matthewholden" = helper.mkHome {
           username = "matthewholden";
           hostname = "C002108230";
           platform = "aarch64-darwin";
