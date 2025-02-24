@@ -14,7 +14,8 @@ jobs:
       - uses: "DeterminateSystems/nix-installer-action@main"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
-          name: "what-is-a-theostack/home-manager"
+          name: "matthew-reed-holden/dotfiles"
           rolling: true
-          visibility: "public"
+          visibility: "private"
           include-output-paths: true
+
