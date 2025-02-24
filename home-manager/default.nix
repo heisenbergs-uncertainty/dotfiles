@@ -97,8 +97,7 @@ in
     zsh = {
       enable = true;
       enableCompletion = true;
-      enableVteIntegration = true;
-      userFriendlyNames = true;
+      enableVteIntegration = true;=
       autocd = true;
       autosuggestion = {
         enable = true;
