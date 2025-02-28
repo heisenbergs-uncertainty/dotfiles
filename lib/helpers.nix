@@ -8,23 +8,66 @@
   # Helper function for generating home-manager configs
   mkHome =
     {
-      hostname ? "nixos",
-      username ? "nixos",
+      hostname,
+      username ? "matthewholden",
+      desktop ? null,
       platform ? "x86_64-linux",
     }:
+    let
+      isISO = builtins.substring 0 4 hostname == "iso-";
+      isInstall = !isISO;
+      isLaptop = hostname == "matthewholden";
+      isWorkstation = builtins.isString desktop;
+    in
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.nixpkgs.legacyPackages.${platform};
       extraSpecialArgs = {
         inherit
           inputs
           outputs
+          desktop
           hostname
           platform
           username
           stateVersion
+          isInstall
+          isLaptop
+          isISO
+          isWorkstation
           ;
       };
       modules = [ ../home-manager ];
+    };
+
+  mkDarwin =
+    {
+      desktop ? "aqua",
+      hostname,
+      username ? "matthewholden",
+      platform ? "aarch64-darwin",
+    }:
+    let
+      isISO = false;
+      isInstall = true;
+      isLaptop = true;
+      isWorkstation = true;
+    in
+    inputs.nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        inherit
+          inputs
+          outputs
+          desktop
+          hostname
+          platform
+          username
+          isInstall
+          isISO
+          isLaptop
+          isWorkstation
+          ;
+      };
+      modules = [ ../darwin ];
     };
 
   forAllSystems = inputs.nixpkgs.lib.genAttrs [

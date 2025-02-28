@@ -9,6 +9,7 @@ let
 in
 {
   inherit (helpers)
+    mkDarwin
     mkHome
     forAllSystems
     ;
