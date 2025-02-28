@@ -11,9 +11,24 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
     catppuccin.url = "github:catppuccin/nix";
+
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*";
+    catppuccin-vsc.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nix-darwin, nixpkgs, ... }@inputs:
+  outputs =
+    {
+      self,
+      nix-darwin,
+      nixpkgs,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -40,6 +55,11 @@
         };
       };
 
+      # Custom packages and modifications, exported as overlays
+      overlays = import ./overlays { inherit inputs; };
+      # Custom packages; acessible via 'nix build', 'nix shell', etc
       packages = helper.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      # Formatter for .nix files, available via 'nix fmt'
+      formatter = helper.forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
     };
 }
