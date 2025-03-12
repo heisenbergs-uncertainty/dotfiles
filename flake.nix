@@ -1,7 +1,7 @@
 {
   description = "Heisenbergs incredibly uncertain nix-darwin and Home Manager Configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +20,9 @@
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-needsreboot.url = "https://flakehub.com/f/wimpysworld/nixos-needsreboot/0.2.5.tar.gz";
+    nixos-needsreboot.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -41,6 +44,7 @@
       # nix run nixpkgs#home-manager -- switch -b backup --flake "${HOME}/.config
       homeConfigurations = {
         "matthewholden@C002108230" = helper.mkHome {
+          username = "matthewholden";
           hostname = "C002108230";
           platform = "aarch64-darwin";
           desktop = "aqua";
@@ -51,6 +55,7 @@
       #nix build .#darwinConfigurations.{hostname}.config.system.build.toplevel
       darwinConfigurations = {
         C002108230 = helper.mkDarwin {
+          username = "matthewholden";
           hostname = "C002108230";
         };
       };

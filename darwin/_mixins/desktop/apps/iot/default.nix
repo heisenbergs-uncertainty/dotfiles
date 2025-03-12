@@ -3,8 +3,9 @@ _: {
     brews = [
       "emqx/mqttx/mqttx-cli"
     ];
-    casks = [ 
+    casks = [
       "mqttx"
+      "prosys-opc-ua-browser"
     ];
   };
 }

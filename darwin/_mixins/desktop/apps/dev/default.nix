@@ -23,6 +23,8 @@ _: {
     casks = [
       "sf-symbols"
       "ghostty"
+      "postman"
+      "insomnia"
     ];
 
   };

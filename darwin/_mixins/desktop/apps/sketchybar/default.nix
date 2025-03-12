@@ -3,6 +3,7 @@ _: {
     brews = [
       "nowplaying-cli"
       "switchaudio-osx"
+      "borders"
       "sketchybar"
     ];
 
@@ -12,6 +13,7 @@ _: {
 
     taps = [
       "FelixKratz/formulae"
+      "koekeishiya/formulae"
     ];
 
   };
