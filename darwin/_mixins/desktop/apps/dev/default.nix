@@ -1,11 +1,14 @@
 _: {
   homebrew = {
     brews = [
+      "composer"
       "docker"
       "go"
       "helm"
+      "hugo" # Static site generator
       "jq"
       "kubernetes-cli"
+      "luarocks"
       "lazydocker"
       "lua"
       "maven"
@@ -14,15 +17,17 @@ _: {
       "node"
       "nowplaying-cli"
       "nvm"
+      "pre-commit"
       "pyenv"
+      "pyenv-virtualenv"
       "python3"
-      "rustup"
       "switchaudio-osx"
     ];
 
     casks = [
       "sf-symbols"
       "ghostty"
+      "julia"
       "postman"
       "insomnia"
     ];

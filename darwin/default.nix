@@ -30,13 +30,30 @@
       pkgs.zsh
     ];
     systemPackages = with pkgs; [
+      cargo
       git
+      ghostscript
+      grpc
+      grpcui
+      grpcurl
+      grpc-tools
+      grpc-gateway
+      imagemagick
+      lua
+      luajit
       m-cli
       mas
+      mermaid-cli
       nix-output-monitor
       nvd
+      php
       plistwatch
+      rustup
+      texliveTeTeX
+      tetex
       sops
+      wireshark
+      wget
     ];
 
     variables = {

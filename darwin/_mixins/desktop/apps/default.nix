@@ -8,6 +8,7 @@ _: {
     ./graphics
     ./iot
     ./maestral
+    ./sdkman
     ./sketchybar
     ./utils
     ./web-browsers

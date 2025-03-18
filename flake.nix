@@ -23,6 +23,8 @@
 
     nixos-needsreboot.url = "https://flakehub.com/f/wimpysworld/nixos-needsreboot/0.2.5.tar.gz";
     nixos-needsreboot.inputs.nixpkgs.follows = "nixpkgs";
+
+    ngrok.url = "github:ngrok/ngrok-nix";
   };
 
   outputs =

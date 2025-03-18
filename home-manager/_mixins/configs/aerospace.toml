@@ -122,6 +122,8 @@ alt-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
+alt-a = 'workspace AI'
+alt-v = 'workspace VSCode'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
@@ -130,6 +132,8 @@ alt-6 = 'workspace 6'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-v = 'move-node-to-workspace VSCode'
+alt-shift-a = 'move-node-to-workspace AI'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
@@ -168,8 +172,48 @@ up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
 
 [[on-window-detected]]
+if.app-id = "com.anthropic.claudefordesktop"
+run = ["move-node-to-workspace AI"]
+
+[[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
+run = ["layout floating", "move-node-to-workspace 1"]
+
+[[on-window-detected]]
+if.app-id = "com.1password.1password"
 run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.axosoft.gitkraken"
+run = ["move-node-to-workspace 1"]
+
+[[on-window-detected]]
+if.app-id = "com.bookry.wavebox"
+run = ["move-node-to-workspace 2"]
+
+[[on-window-detected]]
+if.app-id = "com.bookry.wavebox"
+run = ["move-node-to-workspace 2"]
+
+[[on-window-detected]]
+if.app-id = "org.mozilla.floorp"
+run = ["move-node-to-workspace 2"]
+
+[[on-window-detected]]
+if.app-id = "com.todesktop.230313mzl4w4u92"
+run = ["move-node-to-workspace VSCode"]
+
+[[on-window-detected]]
+if.app-id = "com.microsoft.Outlook"
+run = ["move-node-to-workspace 4"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = ["move-node-to-workspace 5"]
+
+[[on-window-detected]]
+if.app-id = "ai.elementlabs.lmstudio"
+run = ["move-node-to-workspace AI"]
 
 [[workspace-to-monitor-force-assignment]]
 1 = 'main'
