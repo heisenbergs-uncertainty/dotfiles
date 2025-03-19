@@ -16,6 +16,7 @@ in
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
     inputs.nix-index-database.hmModules.nix-index
+    inputs.mac-app-util.homeManagerModules.default
     ./_mixins/features
     ./_mixins/desktop
   ];
@@ -44,8 +45,8 @@ in
       "${config.xdg.configHome}/fastfetch/config.jsonc".text =
         builtins.readFile ./_mixins/configs/fastfetch.jsonc;
       "${config.xdg.configHome}/borders/bordersrc".text = builtins.readFile ./_mixins/configs/bordersrc;
-      # "${config.xdg.configHome}/aerospace/aerospace.toml".text =
-      #   builtins.readFile ./_mixins/configs/aerospace.toml;
+      "${config.xdg.configHome}/aerospace/aerospace.toml".text =
+        builtins.readFile ./_mixins/configs/aerospace.toml;
       "${config.xdg.configHome}/yazi/keymap.toml".text =
         builtins.readFile ./_mixins/configs/yazi-keymap.toml;
       "${config.xdg.configHome}/ghostty/config".text = builtins.readFile ./_mixins/configs/ghostty-config;
@@ -55,12 +56,12 @@ in
       with pkgs;
       [
         cpufetch # Terminal CPU info
-        code-cursor # AI vscode wrapper
         fastfetch # Modern Unix system info
         ipfetch # Terminal IP info
         onefetch # Terminal git project info
-        rustmission # Modern Unix Transmission client
         micro
+        rustmission # Modern Unix Transmission client
+        rsync # Copy files in style
       ]
       ++ lib.optionals isLinux [
         ramfetch
@@ -341,4 +342,5 @@ in
       };
     };
   };
+
 }

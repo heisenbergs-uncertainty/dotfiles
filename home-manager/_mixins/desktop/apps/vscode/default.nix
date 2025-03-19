@@ -28,6 +28,7 @@ lib.mkIf (lib.elem username installFor) {
     nodePackages.prettier
     shellcheck
     shfmt
+    stylua
   ];
 
   # NOTE! I avoid using home-manager to configure settings.json because it

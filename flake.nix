@@ -25,6 +25,9 @@
     nixos-needsreboot.inputs.nixpkgs.follows = "nixpkgs";
 
     ngrok.url = "github:ngrok/ngrok-nix";
+
+    mac-app-util.url = "github:hraban/mac-app-util"; # Fixes .app not showing in spotlight/alfred
+
   };
 
   outputs =

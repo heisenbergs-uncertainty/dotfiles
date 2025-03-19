@@ -8,9 +8,8 @@ _: {
       "hugo" # Static site generator
       "jq"
       "kubernetes-cli"
-      "luarocks"
       "lazydocker"
-      "lua"
+      "luajit"
       "maven"
       "minikube"
       "neovim"

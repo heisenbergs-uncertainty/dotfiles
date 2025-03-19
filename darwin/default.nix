@@ -13,6 +13,7 @@
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
     inputs.nix-index-database.darwinModules.nix-index
+    inputs.mac-app-util.darwinModules.default
     ./${hostname}
     ./_mixins/desktop
     ./_mixins/features
@@ -68,7 +69,7 @@
 
     global = {
       autoUpdate = true;
-      brewfile = false;
+      brewfile = true;
     };
 
     onActivation = {
@@ -81,9 +82,9 @@
 
   nix-homebrew = {
     enable = true;
-    enableRosetta = true;
+    enableRosetta = if (platform == "aarch64-darwin") then true else false;
     autoMigrate = true;
-    user = "matthewholden";
+    user = "${username}";
     mutableTaps = true;
   };
 
@@ -151,23 +152,20 @@
           lib.getExe inputs.nixos-needsreboot.packages.${pkgs.system}.default
         } \"$systemConfig\" || true";
       };
+
       # reload the settings and apply them without the need to logout/login
       postUserActivation.text = ''
         /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
       '';
     };
+
     defaults = {
-      spaces = {
-        spans-displays = false;
-      };
-      CustomUserPreferences = {
-        "com.apple.Safari" = {
-          "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-        };
-      };
       CustomUserPreferences = {
         "com.apple.AdLib" = {
           allowApplePersonalizedAdvertising = false;
+        };
+        "com.apple.controlcenter" = {
+          BatteryShowPercentage = true;
         };
         "com.apple.desktopservices" = {
           # Avoid creating .DS_Store files on network or USB volumes
@@ -176,7 +174,6 @@
         };
         "com.apple.finder" = {
           AppleShowAllFiles = true;
-          CreateDesktop = false;
           _FXSortFoldersFirst = true;
           _FXShowPosixPathInTitle = true;
           FXDefaultSearchScope = "SCcf"; # Search current folder by default
@@ -193,7 +190,6 @@
         "com.apple.screencapture" = {
           location = "~/Pictures/Screenshots";
           type = "png";
-          disable-shadow = true;
         };
 
         "com.apple.safari" = {
@@ -201,6 +197,7 @@
           IncludeDevelopMenu = true;
           "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
         };
+
         "com.apple.SoftwareUpdate" = {
           AutomaticCheckEnabled = true;
           # Check for software updates daily, not just once per week
@@ -213,37 +210,16 @@
         "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
         # Turn on app auto-update
         "com.apple.commerce".AutoUpdate = true;
-      };
-      LaunchServices = {
-        LSQuarantine = false;
-      };
-      NSGlobalDomain = {
-        AppleICUForce24HourTime = true;
-        AppleInterfaceStyle = "Dark";
-        AppleShowAllExtensions = true;
-        AppleMeasurementUnits = "Centimeters";
-        AppleMetricUnits = 1;
-        AppleTemperatureUnit = "Celsius";
-        "com.apple.swipescrolldirection" = false;
-        _HIHideMenuBar = true;
-        InitialKeyRepeat = 15;
-        KeyRepeat = 1;
-        NSAutomaticCapitalizationEnabled = false;
-        NSAutomaticDashSubstitutionEnabled = false;
-        NSAutomaticPeriodSubstitutionEnabled = false;
-        NSAutomaticQuoteSubstitutionEnabled = false;
-        NSAutomaticSpellingCorrectionEnabled = true;
-        NSNavPanelExpandedStateForSaveMode = true;
-        NSNavPanelExpandedStateForSaveMode2 = true;
-        NSAutomaticWindowAnimationsEnabled = false;
-        NSWindowShouldDragOnGesture = true;
-      };
-      SoftwareUpdate = {
-        AutomaticallyInstallMacOSUpdates = false;
+        # Alfred press secretary enable
+        "com.runningwithcrayons.Alfred" = {
+          experimental = {
+            pressecretary = true;
+          };
+        };
       };
       dock = {
-        mru-spaces = false;
         orientation = "left";
+        mru-spaces = false;
         show-recents = false;
         tilesize = 48;
         # Disable hot corners
@@ -252,17 +228,64 @@
         wvous-tl-corner = 1;
         wvous-tr-corner = 1;
       };
+
+      finder = {
+        _FXShowPosixPathInTitle = true;
+        FXEnableExtensionChangeWarning = false;
+        FXPreferredViewStyle = "Nlsv";
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        QuitMenuItem = true;
+        ShowPathbar = true;
+        ShowStatusBar = true;
+      };
+      LaunchServices = {
+        LSQuarantine = false;
+      };
+
       menuExtraClock = {
         ShowAMPM = false;
         ShowDate = 1; # Always
         Show24Hour = true;
         ShowSeconds = false;
       };
+
+      NSGlobalDomain = {
+        AppleICUForce24HourTime = true;
+        AppleInterfaceStyle = "Dark";
+        AppleShowAllExtensions = true;
+        AppleInterfaceStyleSwitchesAutomatically = false;
+        AppleMeasurementUnits = "Centimeters";
+        AppleMetricUnits = 1;
+        AppleTemperatureUnit = "Celsius";
+        "com.apple.swipescrolldirection" = false;
+        _HIHideMenuBar = true;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = true;
+        NSNavPanelExpandedStateForSaveMode = true;
+        NSNavPanelExpandedStateForSaveMode2 = true;
+        NSWindowShouldDragOnGesture = true;
+      };
       screensaver = {
         askForPassword = true;
         askForPasswordDelay = 300;
       };
+
       smb.NetBIOSName = hostname;
+
+      SoftwareUpdate = {
+        AutomaticallyInstallMacOSUpdates = false;
+      };
+
+      spaces = {
+        spans-displays = false;
+      };
+
       trackpad = {
         Clicking = true;
         TrackpadRightClick = true; # enable two finger right click
