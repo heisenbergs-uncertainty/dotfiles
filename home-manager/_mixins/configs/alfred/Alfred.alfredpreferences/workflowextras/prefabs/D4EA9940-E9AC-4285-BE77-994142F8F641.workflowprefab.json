@@ -1,0 +1,104 @@
+{
+  "name" : "FileFilterOrShow",
+  "data" : {
+    "items" : [
+      {
+        "workflowobjecttype" : "alfred.workflow.action.revealfile",
+        "uid" : "9ADDD4B5-FC7D-4A18-90D8-3B0CA1EE8F68",
+        "note" : "Hold the modifier key defined in the circle on the connection to this object while pressing Return to perform this alternative action.",
+        "workflowobjectconfig" : {
+          "path" : ""
+        },
+        "colorindex" : 8,
+        "ypos" : 210,
+        "xpos" : 330
+      },
+      {
+        "workflowobjecttype" : "alfred.workflow.action.openfile",
+        "uid" : "944C6466-1917-4EED-A121-51022CB2AC7F",
+        "note" : "Search for images using your keyword and press Return to perform the Open File action.",
+        "workflowobjectconfig" : {
+          "openwith" : "",
+          "sourcefile" : ""
+        },
+        "colorindex" : 0,
+        "ypos" : 5,
+        "xpos" : 330
+      },
+      {
+        "workflowobjecttype" : "alfred.workflow.input.filefilter",
+        "uid" : "B843FC11-AD60-4F16-9D8F-3E8B0D4A1DB6",
+        "note" : "",
+        "workflowobjectconfig" : {
+          "argumenttrimmode" : 0,
+          "keyword" : "img",
+          "daterange" : 0,
+          "scopes" : [
+
+          ],
+          "sortmode" : 0,
+          "fields" : [
+            {
+              "split" : true,
+              "value" : "{query}",
+              "words" : true,
+              "not" : false,
+              "field" : "kMDItemDisplayName"
+            },
+            {
+              "split" : true,
+              "value" : "{query}",
+              "words" : true,
+              "not" : false,
+              "field" : "kMDItemAlternateNames"
+            },
+            {
+              "split" : true,
+              "value" : "{query}",
+              "words" : true,
+              "not" : false,
+              "field" : "kMDItemFinderComment"
+            }
+          ],
+          "argumenttype" : 0,
+          "title" : "Image Search",
+          "anchorfields" : true,
+          "runningsubtext" : "",
+          "limit" : 0,
+          "subtext" : "Search for JPG, PNG and GIF files on your Mac",
+          "includesystem" : false,
+          "types" : [
+            "com.compuserve.gif",
+            "public.jpeg",
+            "public.png"
+          ],
+          "withspace" : true
+        },
+        "colorindex" : 0,
+        "ypos" : 5,
+        "xpos" : 20
+      }
+    ],
+    "connections" : [
+      {
+        "sourceuid" : "B843FC11-AD60-4F16-9D8F-3E8B0D4A1DB6",
+        "config" : {
+          "destinationuid" : "9ADDD4B5-FC7D-4A18-90D8-3B0CA1EE8F68",
+          "modifiers" : 0,
+          "modifiersubtext" : "",
+          "vitoclose" : false
+        }
+      },
+      {
+        "sourceuid" : "B843FC11-AD60-4F16-9D8F-3E8B0D4A1DB6",
+        "config" : {
+          "destinationuid" : "944C6466-1917-4EED-A121-51022CB2AC7F",
+          "modifiers" : 0,
+          "modifiersubtext" : "",
+          "vitoclose" : false
+        }
+      }
+    ]
+  },
+  "description" : ""
+}

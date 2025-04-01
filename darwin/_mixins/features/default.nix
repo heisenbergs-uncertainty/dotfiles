@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./docker
     ./podman
   ];
 

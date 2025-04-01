@@ -186,11 +186,11 @@ run = ["move-node-to-workspace AI"]
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = ["layout floating", "move-node-to-workspace T"]
+run = ["layout floating", "move-node-to-workspace Terminal"]
 
 [[on-window-detected]]
 if.app-id = "net.kovidgoyal.kitty"
-run = ["layout floating", "move-node-to-workspace T"]
+run = ["layout floating", "move-node-to-workspace Terminal"]
 
 [[on-window-detected]]
 if.app-id = "com.1password.1password"

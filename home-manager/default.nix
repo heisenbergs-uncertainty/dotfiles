@@ -62,6 +62,7 @@ in
         micro
         rustmission # Modern Unix Transmission client
         rsync # Copy files in style
+        starship # Blazing fast rust powered shell prompt
       ]
       ++ lib.optionals isLinux [
         ramfetch
@@ -198,6 +199,14 @@ in
 
     home-manager.enable = true;
 
+    jetbrains-remote = {
+      enable = true;
+    };
+
+    joplin-desktop = {
+      enable = true;
+    };
+
     jq.enable = true;
 
     kitty = {
@@ -239,8 +248,6 @@ in
         enabled_layouts = "Splits,Stack";
         dynamic_background_opacity = true;
         tab_title_template = "{title}{fmt.bold}{'  ' if num_windows > 1 and layout_name == 'stack' else ''}";
-        symbol_map = "U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono";
-        disable_ligatures = "cursor";
       };
     };
 
@@ -267,7 +274,6 @@ in
     starship = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
       # https://github.com/etrigan63/Catppuccin-starship
     };
@@ -332,10 +338,21 @@ in
 
         export SDKMAN_DIR="$HOMEBREW_PREFIX/opt/sdkman-cli/libexec"
         [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+        #### DOCKER ####
+        ################
+
+        export PATH="$PATH:$HOME/.jetbrains/bin"
+
+        ###############
+        ####JETBRAINS##
+        export FLEET_PROPERTIES_FILE=~/.config/jetbrains/fleet/fleet.properties
+
+        export PATH="$PATH:$HOME/Code/github/heisenbergoss/streampipes/installer/cli/streampipes"
+
       '';
       profileExtra = ''
         export KUBECONFIG="$HOME/.config/kube/config"
-        export PATH="$PATH:$HOME/Code/github/holdem3_cat/streampipes/installer/cli"
       '';
       syntaxHighlighting = {
         enable = true;

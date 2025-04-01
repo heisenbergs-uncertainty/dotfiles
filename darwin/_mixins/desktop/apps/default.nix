@@ -1,12 +1,14 @@
 _: {
   imports = [
-    #./1password
+    ./1password
     ./ai
     ./alfred
+    ./dbs
     ./dev
     ./grammarly
     ./graphics
     ./iot
+    ./interpreters
     ./maestral
     ./sdkman
     ./sketchybar

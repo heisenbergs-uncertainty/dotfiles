@@ -1,20 +1,16 @@
-_: {
+{ pkgs, ... }:
+{
   homebrew = {
     brews = [
       "composer"
       "docker"
-      "go"
-      "helm"
-      "hugo" # Static site generator
-      "jq"
-      "kubernetes-cli"
+      "docker-completion"
+      # "kubernetes-cli"
       "lazydocker"
-      "luajit"
-      "maven"
-      "minikube"
       "neovim"
       "node"
       "nowplaying-cli"
+      "newman"
       "nvm"
       "pre-commit"
       "pyenv"
@@ -29,7 +25,23 @@ _: {
       "julia"
       "postman"
       "insomnia"
+      "jetbrains-toolbox"
     ];
 
   };
+
+  environment.systemPackages = with pkgs; [
+    kubernetes-helm
+    kubectl
+    helm-ls
+    hugo
+    helmfile
+    helmsman
+    helm-docs
+    jq
+    minikube
+    tenv
+    terraformer
+    terraform-ls
+  ];
 }

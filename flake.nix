@@ -1,7 +1,10 @@
 {
   description = "Heisenbergs incredibly uncertain nix-darwin and Home Manager Configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*";
+
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -9,8 +12,14 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
+    nixos-needsreboot.url = "https://flakehub.com/f/wimpysworld/nixos-needsreboot/0.2.5.tar.gz";
+    nixos-needsreboot.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.url = "github:catppuccin/nix";
+
+    disko.url = "https://flakehub.com/f/nix-community/disko/1.11.0.tar.gz";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/*";
 
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,15 +27,20 @@
     catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*";
     catppuccin-vsc.inputs.nixpkgs.follows = "nixpkgs";
 
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-needsreboot.url = "https://flakehub.com/f/wimpysworld/nixos-needsreboot/0.2.5.tar.gz";
-    nixos-needsreboot.inputs.nixpkgs.follows = "nixpkgs";
-
-    ngrok.url = "github:ngrok/ngrok-nix";
-
     mac-app-util.url = "github:hraban/mac-app-util"; # Fixes .app not showing in spotlight/alfred
+    mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
+
+    sops-nix.url = "https://flakehub.com/f/Mic92/sops-nix/0.1.887.tar.gz";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
+    nix-jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 

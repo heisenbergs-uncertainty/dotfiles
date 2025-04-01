@@ -17,18 +17,11 @@ lib.mkIf (lib.elem username installFor) {
 
   # Packages that are used by some of the extensions below
   home.packages = with pkgs; [
-    bash-language-server
-    go
-    gopls
-    luaformatter
-    luajit
-    lua-language-server
     nil
     nixfmt-rfc-style
     nodePackages.prettier
     shellcheck
     shfmt
-    stylua
   ];
 
   # NOTE! I avoid using home-manager to configure settings.json because it

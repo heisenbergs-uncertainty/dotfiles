@@ -5,7 +5,8 @@ in
 {
   imports = [
     ./gitkraken
+    ./jetbrains
     ./music
-    ./vscode
+    # ./vscode
   ];
 }

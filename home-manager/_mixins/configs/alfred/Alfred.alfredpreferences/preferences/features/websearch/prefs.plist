@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>541C3ABA-B350-4479-B23C-82939F53BBD4</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>nixpkgs?</string>
+			<key>text</key>
+			<string>{query}</string>
+			<key>url</key>
+			<string>https://search.nixos.org/packages?query={query}</string>
+		</dict>
+		<key>898C7540-4A63-4C7E-BBE4-AC535D3D61A0</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>hm?</string>
+			<key>text</key>
+			<string>Home Manager options search for '{query}'</string>
+			<key>url</key>
+			<string>https://home-manager-options.extranix.com/?query={query}&amp;release=release-24.11</string>
+		</dict>
+		<key>90ED30E2-1E77-431C-BB35-C8443486395B</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>darwin</string>
+			<key>text</key>
+			<string>Search Nix Darwin Options for '{query}'</string>
+			<key>url</key>
+			<string>https://mynixos.com/search?q={query}</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

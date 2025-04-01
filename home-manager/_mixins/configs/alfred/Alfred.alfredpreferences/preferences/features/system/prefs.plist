@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>emptytrashConfirm</key>
+	<true/>
+	<key>emptytrashKeyword</key>
+	<string>!trash</string>
+	<key>forcequitKeyword</key>
+	<string>!quit -f</string>
+	<key>logoutKeyword</key>
+	<string>!log</string>
+	<key>quitallConfirm</key>
+	<true/>
+	<key>quitallKeyword</key>
+	<string>!quit -a</string>
+	<key>restartConfirm</key>
+	<true/>
+	<key>restartKeyword</key>
+	<string>reset</string>
+	<key>screensaverKeyword</key>
+	<string>!screen</string>
+	<key>shutdownConfirm</key>
+	<true/>
+	<key>shutdownKeyword</key>
+	<string>off</string>
+	<key>sleepKeyword</key>
+	<string>zzz</string>
+	<key>sleepdisplaysKeyword</key>
+	<string>+zzz</string>
+	<key>volumedownKeyword</key>
+	<string>v-</string>
+	<key>volumemuteKeyword</key>
+	<string>!v</string>
+	<key>volumeupKeyword</key>
+	<string>v+</string>
+</dict>
+</plist>
