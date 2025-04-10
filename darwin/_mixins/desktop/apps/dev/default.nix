@@ -40,6 +40,8 @@
     helm-docs
     jq
     minikube
+    prettierd
+    prettier-plugin-go-template
     tenv
     terraformer
     terraform-ls

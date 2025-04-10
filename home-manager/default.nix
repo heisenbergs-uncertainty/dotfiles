@@ -14,7 +14,7 @@ let
 in
 {
   imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
     inputs.nix-index-database.hmModules.nix-index
     inputs.mac-app-util.homeManagerModules.default
     ./_mixins/features
@@ -349,6 +349,14 @@ in
         export FLEET_PROPERTIES_FILE=~/.config/jetbrains/fleet/fleet.properties
 
         export PATH="$PATH:$HOME/Code/github/heisenbergoss/streampipes/installer/cli/streampipes"
+
+        ##### GOLANG #######
+        ####################
+
+        export GOPATH="$HOME/Code/go"
+        export PATH="$PATH:$GOPATH/bin"
+
+
 
       '';
       profileExtra = ''
