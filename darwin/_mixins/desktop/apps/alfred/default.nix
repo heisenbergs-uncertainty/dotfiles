@@ -1,5 +1,8 @@
 _: {
   homebrew = {
-    casks = [ "alfred" ];
+    casks = [ 
+      "alfred"
+      "raycast"
+    ];
   };
 }
