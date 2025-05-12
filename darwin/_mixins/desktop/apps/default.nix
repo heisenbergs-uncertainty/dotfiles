@@ -1,8 +1,7 @@
 _: {
   imports = [
-    ./1password
     ./ai
-    ./alfred
+    ./cmd_center
     ./dbs
     ./dev
     ./grammarly
@@ -10,7 +9,8 @@ _: {
     ./iot
     ./interpreters
     ./maestral
-    ./sdkman
+    ./password
+    ./pkg-manage
     ./sketchybar
     ./utils
     ./web-browsers

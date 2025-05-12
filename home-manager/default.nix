@@ -16,7 +16,6 @@ in
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     inputs.nix-index-database.hmModules.nix-index
-    inputs.mac-app-util.homeManagerModules.default
     ./_mixins/features
     ./_mixins/desktop
   ];
@@ -39,6 +38,8 @@ in
     inherit stateVersion;
     inherit username;
 
+    enableNixpkgsReleaseCheck = true;
+
     homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
 
     file = {
@@ -52,6 +53,9 @@ in
       "${config.xdg.configHome}/ghostty/config".text = builtins.readFile ./_mixins/configs/ghostty-config;
       ".hidden".text = ''snap'';
     };
+
+    preferXdgDirectories = true;
+
     packages =
       with pkgs;
       [
@@ -309,29 +313,91 @@ in
       autosuggestion = {
         enable = true;
       };
-      completionInit = "autoload -U compinit && compinit";
+      completionInit = ''
+        autoload -U compinit && compinit
+      '';
       dotDir = ".config/zsh";
       enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
-      historySubstringSearch.enable = true;
-      initExtraBeforeCompInit = ''
-        #### NVM ####
+      envExtra = ''
+        export DOTFILES="$HOME/.config"
+
+        ### ASDF ####
         #############
 
-        export NVM_DIR="$HOME/.config/nvm"
-        [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-        [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+        export ASDF_CONFIG_FILE="$DOTFILES/asdf/.asdfrc"
 
-        #### PYENV ####
+        #### PYTHON ####
         ###############
 
-        export PYENV_ROOT="$HOME/.config/pyenv"
+
+
+        ### JETBRAINS ###
+        #################
+
+        export FLEET_PROPERTIES_FILE="$DOTFILES/jetbrains/fleet/fleet.properties"
+
+        ###### GO #######
+        #################
+        export GOPATH="$HOME/.go"
+
+        ##### DOTNET #######
+        ####################
+        export DOTNET_ROOT="/usr/local/share/dotnet"
+        export DOTNET_TOOLS="$DOTNET_ROOT/tools"
+
+        #### NODE #######
+        #################
+
+        export ENV="$DOTFILES/pnpm"
+
+        #### KUBE ######
+        ###############
+        export KUBECONFIG="$DOTFILES/kube/config"
+
+      '';
+      history = {
+        append = true;
+        expireDuplicatesFirst = true;
+        extended = true;
+        ignoreAllDups = true;
+        ignoreDups = true;
+        save = 10000;
+      };
+      historySubstringSearch = {
+        enable = true;
+      };
+      # Extra commands that should be added to .zshrc.
+      initExtra = ''
+        #### ONEPASSWORD ###
+        ####################
+
+      '';
+      # Extra commands that should be added to .zshrc before compinit.
+      initExtraBeforeCompInit = ''
+        ### HOMEBREW ###
+        ################
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        #### ASDF #####
+        ###############
+
+        export ASDF_DATA_DIR="$HOME/asdf"
+        export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+        [[ -d $ASDF_DATA_DIR/completions ]] && asdf completion zsh > "$ASDF_DATA_DIR/completions/_asdf"
+        export FPATH="$ASDF_DATA_DIR/completions:$FPATH"
+
+        ###### PYENV ######
+        ##################
+
 
         [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-
         eval "$(pyenv init - zsh)"
-        eval "$(pyenv virtualenv-init -)"
+        eval "$(pyenv virtualenv-init - zsh)"
+
+
 
         #### SDKMAN ####
         ################
@@ -339,33 +405,60 @@ in
         export SDKMAN_DIR="$HOMEBREW_PREFIX/opt/sdkman-cli/libexec"
         [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-        #### DOCKER ####
-        ################
-
-        export PATH="$PATH:$HOME/.jetbrains/bin"
 
         ###############
         ####JETBRAINS##
-        export FLEET_PROPERTIES_FILE=~/.config/jetbrains/fleet/fleet.properties
 
-        export PATH="$PATH:$HOME/Code/github/heisenbergoss/streampipes/installer/cli/streampipes"
+        export PATH="$PATH:$HOME/jetbrains/bin"
+
+        ####STREAMPIPES####
+        ###################
+
+        export PATH="$PATH:$HOME/Code/github/heisenbergoss/streampipes/installer/cli"
 
         ##### GOLANG #######
         ####################
 
-        export GOPATH="$HOME/Code/go"
         export PATH="$PATH:$GOPATH/bin"
 
+        ##### DOTNET #######
+        ####################
+        export PATH="$PATH:$DOTNET_ROOT:$DOTNET_TOOLS"
 
+        #### RUST ########
+        #################
 
+        export PATH="$HOME/.cargo/bin:$PATH"
+
+        export PATH="$HOME/.local/bin:$PATH"
       '';
+      # Commands that should be added to top of .zshrc.
+      initExtraFirst = '''';
+      # Extra commands that should be added to .zlogin.
+      loginExtra = '''';
+      # Extra commands that should be added to .zprofile.
       profileExtra = ''
-        export KUBECONFIG="$HOME/.config/kube/config"
+        export PYENV_ROOT="$HOME/.pyenv"
       '';
+      # Environment variables that will be set for zsh session.
+      sessionVariables = {
+
+      };
+      # An attribute set that maps aliases (the top level attribute names in this option) to command strings or directly to build outputs.
+      shellAliases = {
+
+      };
       syntaxHighlighting = {
         enable = true;
       };
+      zsh-abbr = {
+        enable = true;
+        abbreviations = { };
+      };
     };
+  };
+
+  services = {
   };
 
 }

@@ -5,27 +5,24 @@
       "composer"
       "docker"
       "docker-completion"
-      # "kubernetes-cli"
+      "jupyter"
+      "jupyterlab"
       "lazydocker"
       "neovim"
-      "node"
       "nowplaying-cli"
+      "mono-libgdiplus"
       "newman"
-      "nvm"
       "pre-commit"
-      "pyenv"
-      "pyenv-virtualenv"
-      "python3"
       "switchaudio-osx"
     ];
 
     casks = [
+      "git-credential-manager"
       "sf-symbols"
       "ghostty"
       "julia"
       "postman"
       "insomnia"
-      "jetbrains-toolbox"
     ];
 
   };

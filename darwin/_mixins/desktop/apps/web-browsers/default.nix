@@ -2,7 +2,7 @@ _: {
   homebrew = {
     casks = [
       "floorp"
-      "brave-browser"
+      # "brave-browser"
       "wavebox"
     ];
   };

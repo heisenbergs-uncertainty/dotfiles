@@ -5,7 +5,9 @@
       "go"
       "gopls"
     ];
+
   };
+
   environment.systemPackages = with pkgs; [
     ansible
     ansible-lint
@@ -16,9 +18,6 @@
     jdk23
     jre8
     luajit_openresty
-    luajitPackages.luarocks
-    lua-language-server
-    maven
     scala
     scalafmt
     scalafix

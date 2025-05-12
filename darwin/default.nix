@@ -13,7 +13,6 @@
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
     inputs.nix-index-database.darwinModules.nix-index
-    inputs.mac-app-util.darwinModules.default
     ./${hostname}
     ./_mixins/desktop
     ./_mixins/features
@@ -67,11 +66,6 @@
   homebrew = {
     enable = true;
 
-    global = {
-      autoUpdate = true;
-      brewfile = true;
-    };
-
     onActivation = {
       autoUpdate = true;
       upgrade = true;
@@ -112,7 +106,8 @@
         nix-path = config.nix.nixPath;
         trusted-users = [
           "root"
-          "${username}"
+          "matthewholden"
+          "holdem3_cat"
         ];
         warn-dirty = false;
       };
@@ -190,12 +185,6 @@
         "com.apple.screencapture" = {
           location = "~/Pictures/Screenshots";
           type = "png";
-        };
-
-        "com.apple.safari" = {
-          AutoOpenSafeDownloads = false;
-          IncludeDevelopMenu = true;
-          "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
         };
 
         "com.apple.SoftwareUpdate" = {

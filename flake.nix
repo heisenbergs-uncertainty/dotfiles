@@ -33,9 +33,6 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
-    mac-app-util.url = "github:hraban/mac-app-util"; # Fixes .app not showing in spotlight/alfred
-    mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
-
     sops-nix.url = "https://flakehub.com/f/Mic92/sops-nix/0.1.887.tar.gz";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -62,7 +59,7 @@
       # home-manager switch -b backup --flake $HOME/.config
       # nix run nixpkgs#home-manager -- switch -b backup --flake "${HOME}/.config
       homeConfigurations = {
-        "matthewholden@C002108230" = helper.mkHome {
+        "matthewholden" = helper.mkHome {
           username = "matthewholden";
           hostname = "C002108230";
           platform = "aarch64-darwin";
